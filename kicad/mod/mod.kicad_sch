@@ -465,7 +465,6 @@
     )
   )
 
-  (junction (at 40.64 35.56) (diameter 0.9144) (color 0 0 0 0))
   (junction (at 55.88 40.64) (diameter 0.9144) (color 0 0 0 0))
   (junction (at 58.42 35.56) (diameter 0.9144) (color 0 0 0 0))
   (junction (at 71.12 35.56) (diameter 0.9144) (color 0 0 0 0))
@@ -653,24 +652,6 @@
   (label "PWM_IN" (at 147.32 104.14 180)
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid 0536ccbf-2c3b-4a04-9f6e-2e26475d7808)
-  )
-
-  (symbol (lib_id "power:PWR_FLAG") (at 40.64 35.56 90) (unit 1)
-    (in_bom yes) (on_board yes)
-    (uuid 928e5337-613b-4307-8298-b337ca15fc47)
-    (property "Reference" "#FLG0101" (id 0) (at 38.735 35.56 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "PWR_FLAG" (id 1) (at 36.83 35.56 90)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "" (id 2) (at 40.64 35.56 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (id 3) (at 40.64 35.56 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid a35e80df-5fde-4066-a9bc-c8d556256bca))
   )
 
   (symbol (lib_id "power:PWR_FLAG") (at 55.88 40.64 90) (unit 1)
@@ -1029,9 +1010,6 @@
   (symbol_instances
     (path "/b60f6179-0871-49e1-9979-1217542d724e"
       (reference "#FLG01") (unit 1) (value "PWR_FLAG") (footprint "")
-    )
-    (path "/928e5337-613b-4307-8298-b337ca15fc47"
-      (reference "#FLG0101") (unit 1) (value "PWR_FLAG") (footprint "")
     )
     (path "/e33dedd4-4100-43ea-9038-ea912e5a8d37"
       (reference "#PWR01") (unit 1) (value "GND") (footprint "")
