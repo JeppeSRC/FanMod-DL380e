@@ -45,7 +45,7 @@
         "silk_text_upright": false,
         "zones": {
           "45_degree_only": false,
-          "min_clearance": 0.3
+          "min_clearance": 0.22
         }
       },
       "diff_pair_dimensions": [
@@ -119,6 +119,8 @@
       },
       "track_widths": [
         0.0,
+        0.25,
+        0.35,
         1.0,
         1.5,
         2.0,
@@ -128,6 +130,14 @@
         {
           "diameter": 0.0,
           "drill": 0.0
+        },
+        {
+          "diameter": 0.8,
+          "drill": 0.5
+        },
+        {
+          "diameter": 1.0,
+          "drill": 0.6
         }
       ],
       "zones_allow_external_fillets": false,
@@ -418,7 +428,7 @@
   },
   "sheets": [
     [
-      "d07c5233-fd55-4c1d-89f8-87e12895e91f",
+      "3175b9f0-3067-469e-be13-be4870007287",
       ""
     ]
   ],
