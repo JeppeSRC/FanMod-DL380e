@@ -1,0 +1,44 @@
+!FuckMake
+
+CC = avr-gcc
+LD = %(CC)
+AS = avr-as
+
+CFILES = GetFiles(src/, *.c,)
+ASMFILES = GetFiles(src/, *.asm,)
+
+INC = -Isrc/
+
+OutDir = bin/
+ObjDir = %(OutDir)obj/
+
+AFLAGS = -mmcu=avrxmega3
+CFLAGS = %(AFLAGS) -O3 -Wall
+LFLAGS = -nostartfiles -nodefaultlibs -nostdlib -Wl,--gc-sections -T"LinkerScript.ld" -mmcu=avrxmega3
+
+Compile {
+    Msg(Compiling %Input)
+    !%(CC) %(CFLAGS) %(INC) -c -o %Output %Input
+}
+
+Assemble {
+    Msg(Assembling %Input)
+    !%(AS) %(AFLAGS) %(INC) -c -o %Output %Input
+}
+
+Link {
+    Msg(Linking..)
+    !%(LD) %(LFLAGS) -o %Output %Input
+}
+
+build:
+    ExecuteList(Compile, %(CFILES), %(ObjDir))
+    ExecuteList(Assemble, %(ASMFILES), %(ObjDir))
+    Execute(Link, GetFiles(%(ObjDir),*.obj,), %(OutDir)test.elf)
+
+clean:
+    DeleteFiles(GetFiles(%(ObjDir), *.obj,))
+
+rebuild:
+    ExecuteTarget(clean)
+    ExecuteTarget(build)
