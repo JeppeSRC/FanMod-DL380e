@@ -77,7 +77,7 @@ BSS:
     lds r1, bssend
 
     sub r1, r26
-    breq main
+    breq Main
 
     eor r0, r0
 ZeroBSS:
@@ -85,7 +85,8 @@ ZeroBSS:
     dec r1
     brne ZeroBSS
 
-    jmp main
+Main:
+    call main
 
 
 Default_Handler:
