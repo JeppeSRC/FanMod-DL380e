@@ -7,7 +7,9 @@
 #define SHIFT(bits) ((uint8)(bits & 0xFF))
 #define MASK(bits) ((uint8)((bits >> 8) & 0xFF))
 
-void  write(uint16 registerAddress, uint16 bits, uint8 data);
-uint8 read(uint16 registerAddress, uint16 bits);
+void   write(uint16 registerAddress, uint16 bits, uint8 data);
+void   writew(uint16 registerAddress, uint16 data);
+uint8  read(uint16 registerAddress, uint16 bits);
+uint16 readw(uint16 registerAddress);
 
 #endif
