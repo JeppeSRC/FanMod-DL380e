@@ -95,7 +95,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.c" />
+    <ClCompile Include="src\sys\clkctrl.c" />
     <ClCompile Include="src\sys\cpuint.c" />
+    <ClCompile Include="src\sys\sys.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FuckFile" />
@@ -103,8 +105,10 @@
     <None Include="src\sys\startup.asm" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\sys\clkctrl.h" />
     <ClInclude Include="src\sys\cpuint.h" />
     <ClInclude Include="src\sys\def.h" />
+    <ClInclude Include="src\sys\sys.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

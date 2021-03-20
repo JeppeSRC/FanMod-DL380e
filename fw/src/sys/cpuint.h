@@ -1,27 +1,32 @@
 #ifndef _CPUINT_H_
 #define _CPUINT_H_
 
-#include "def.h"
+#include "sys.h"
 
 #define CPUINT_ADDR 0x0110
 
+#define CPUINT_CTRLA	0x00
+#define CPUINT_STATUS	0x01
+#define CPUINT_LVL0PRI	0x02
+#define CPUINT_LCL1VEC	0x03
+
 //CTRLA
-#define IVSEL	0x40
-#define CVT		0x20
-#define LVL0RR	0x01
+#define LVL0RR			MAKEBITS(0x01, 0)
+#define CVT				MAKEBITS(0x01, 5)
+#define IVSEL			MAKEBITS(0x01, 6)
 
 //STATUS
-#define NMIEX	0x80
-#define LVL1EX	0x02
-#define	LVL0EX	0x01
+#define	LVL0EX			MAKEBITS(0x01, 0)
+#define LVL1EX			MAKEBITS(0x01, 1)
+#define NMIEX			MAKEBITS(0x01, 7)
 
-typedef struct {
-	uint8 CTRLA;
-	uint8 STATUS;
-	uint8 LVL0PRI;
-	uint8 LVL1VEC;
-} _CPUINT;
+//LVL0PRI
+#define LVL0PRI			MAKEBITS(0xFF, 0)
 
-extern volatile _CPUINT* CPUINT;
+//LVL1VEC
+#define LVL1VEC			MAKEBITS(0xFF, 0)
+
+void  cpuint_write(uint8 registerOffset, uint16 bits, uint8 data);
+uint8 cpuint_read(uint8 registerOffset, uint16 bits);
 
 #endif
