@@ -98,6 +98,7 @@
     <ClCompile Include="src\sys\clkctrl.c" />
     <ClCompile Include="src\sys\cpuint.c" />
     <ClCompile Include="src\sys\sys.c" />
+    <ClCompile Include="src\sys\tca0.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FuckFile" />
@@ -109,6 +110,7 @@
     <ClInclude Include="src\sys\cpuint.h" />
     <ClInclude Include="src\sys\def.h" />
     <ClInclude Include="src\sys\sys.h" />
+    <ClInclude Include="src\sys\tca0.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
