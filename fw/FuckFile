@@ -13,8 +13,8 @@ OutDir = bin/
 ObjDir = %(OutDir)obj/
 
 AFLAGS = -mmcu=avrxmega3
-CFLAGS = %(AFLAGS) -O3 -Wall
-LFLAGS = -nostartfiles -nodefaultlibs -nostdlib -Wl,--gc-sections -T"LinkerScript.ld" -mmcu=avrxmega3
+CFLAGS = %(AFLAGS) -O3 -Wall -flto
+LFLAGS = -nostartfiles -nodefaultlibs -nostdlib -Wl,--gc-sections -T"LinkerScript.ld" -mmcu=avrxmega3 -flto
 
 Compile {
     Msg(Compiling %Input)
