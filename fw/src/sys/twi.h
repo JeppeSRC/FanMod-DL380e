@@ -93,6 +93,6 @@
 void  twi_write(uint8 registerOffset, uint8 mask, uint8 data);
 uint8 twi_read(uint8 registerOffset, uint8 mask);
 
-
+void twi_init(uint8 address);
 
 #endif
