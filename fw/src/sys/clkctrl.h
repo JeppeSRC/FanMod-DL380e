@@ -1,7 +1,7 @@
 #ifndef _CLKCTRL_H_
 #define _CLKCTRL_H_
 
-#include "def.h"
+#include "sys.h"
 
 #define CLKCTRL_ADDR            0x0060
 
@@ -16,35 +16,35 @@
 
 
 //MCLKCTRLA
-#define CLKCTRL_bCLKSEL         MAKEBITS(0x03, 0)
+#define CLKCTRL_bCLKSEL         0x03
 
 //MCLKCTRLB
-#define CLKCTRL_bPEN            MAKEBITS(0x01, 0)
-#define CLKCTRL_bPDIV           MAKEBITS(0x0F, 1)
+#define CLKCTRL_bPEN            0x01
+#define CLKCTRL_bPDIV           0x1E
 
 //MCLKLOCK
-#define CLKCTRL_bLOCKEN         MAKEBITS(0x01, 0)
+#define CLKCTRL_bLOCKEN         0x01
 
 //MCLKSTATUS
-#define CLKCTRL_bSOSC           MAKEBITS(0x01, 0)
-#define CLKCTRL_bOSC20MS        MAKEBITS(0x01, 4)
-#define CLKCTRL_bOSC32KS        MAKEBITS(0x01, 5)
-#define CLKCTRL_bEXTS           MAKEBITS(0x01, 7)
+#define CLKCTRL_bSOSC           0x01
+#define CLKCTRL_bOSC20MS        0x10
+#define CLKCTRL_bOSC32KS        0x20
+#define CLKCTRL_bEXTS           0x80
 
 //OSC20MCTRLA
-#define CLKCTRL_bRUNSTDBY       MAKEBITS(0x01, 1)
+#define CLKCTRL_bRUNSTDBY       0x02
 
 //OSC20MCALIBA
-#define CLKCTRL_bCAL20M         MAKEBITS(0x3F, 0)
+#define CLKCTRL_bCAL20M         0x3F
 
 //OSC20MCALIBB
-#define CLKCTRL_bTEMPCAL20M     MAKEBITS(0x0F, 0)
-#define CLKCTRL_bLOCK           MAKEBITS(0x01, 7)
+#define CLKCTRL_bTEMPCAL20M     0x0F
+#define CLKCTRL_bLOCK           0x80
 
 //OSC32KCTRLA
 //#define RUNSTDBY
 
-void  clkctrl_write(uint8 registerOffset, uint16 bits, uint8 data);
-uint8 clkctrl_read(uint8 registerOffset, uint16 bits);
+void  clkctrl_write(uint8 registerOffset, uint8 mask, uint8 data);
+uint8 clkctrl_read(uint8 registerOffset, uint8 mask);
 
 #endif

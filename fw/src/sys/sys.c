@@ -1,11 +1,13 @@
 #include "sys.h"
+#include <math/math.h>
 
+#define LSBPOS(x) log2(maskLSB(x))
 
-void write(uint16 registerAddress, uint16 bits, uint8 data) {
+void write(uint16 registerAddress, uint8 mask, uint8 data) {
     volatile uint8* reg = (uint8*)registerAddress;
 
-    uint8 tmp = *reg & ~MASK(bits);
-    tmp |= (data << SHIFT(bits)) & MASK(bits);
+    uint8 tmp = *reg & ~mask;
+    tmp |= (data << LSBPOS(mask)) & mask;
     *reg = tmp;
 }
 
@@ -17,10 +19,10 @@ void writew(uint16 registerAddress, uint16 data) {
     *reg = (uint8)(data >> 8);
 }
 
-uint8 read(uint16 registerAddress, uint16 bits) {
+uint8 read(uint16 registerAddress, uint8 mask) {
     volatile uint8* reg = (uint8*)registerAddress;
 
-    return (*reg >> SHIFT(bits)) & MASK(bits);
+    return (*reg & mask) >> LSBPOS(mask);
 }
 
 uint16 readw(uint16 registerAddress) {
