@@ -30,6 +30,9 @@
     <ClCompile Include="src\sys\tca0.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\math\math.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="LinkerScript.ld" />
@@ -52,6 +55,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\sys\tca0.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\math\math.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

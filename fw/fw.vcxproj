@@ -95,6 +95,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.c" />
+    <ClCompile Include="src\math\math.c" />
     <ClCompile Include="src\sys\clkctrl.c" />
     <ClCompile Include="src\sys\cpuint.c" />
     <ClCompile Include="src\sys\sys.c" />
@@ -106,6 +107,7 @@
     <None Include="src\sys\startup.asm" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\math\math.h" />
     <ClInclude Include="src\sys\clkctrl.h" />
     <ClInclude Include="src\sys\cpuint.h" />
     <ClInclude Include="src\sys\def.h" />
