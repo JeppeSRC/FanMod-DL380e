@@ -98,6 +98,7 @@
     <ClCompile Include="src\math\math.c" />
     <ClCompile Include="src\sys\clkctrl.c" />
     <ClCompile Include="src\sys\cpuint.c" />
+    <ClCompile Include="src\sys\evsys.c" />
     <ClCompile Include="src\sys\sys.c" />
     <ClCompile Include="src\sys\tca0.c" />
     <ClCompile Include="src\sys\tcb0.c" />
@@ -112,6 +113,7 @@
     <ClInclude Include="src\sys\clkctrl.h" />
     <ClInclude Include="src\sys\cpuint.h" />
     <ClInclude Include="src\sys\def.h" />
+    <ClInclude Include="src\sys\evsys.h" />
     <ClInclude Include="src\sys\sys.h" />
     <ClInclude Include="src\sys\tca0.h" />
     <ClInclude Include="src\sys\tcb0.h" />
