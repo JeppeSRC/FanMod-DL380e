@@ -1,7 +1,7 @@
 #ifndef _TCA0_H_
 #define _TCA0_H_
 
-#include "sys.h"
+#include "def.h"
 
 #define TCA0_ADDR       0x0A00
 

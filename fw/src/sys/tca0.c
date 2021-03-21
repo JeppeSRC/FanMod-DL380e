@@ -1,4 +1,5 @@
 #include "tca0.h"
+#include "sys.h"
 
 void tca0_write(uint8 registerOffset, uint8 mask, uint8 data) {
     write(TCA0_ADDR + registerOffset, mask, data);

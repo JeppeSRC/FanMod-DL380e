@@ -1,7 +1,7 @@
 #ifndef _CLKCTRL_H_
 #define _CLKCTRL_H_
 
-#include "sys.h"
+#include "def.h"
 
 #define CLKCTRL_ADDR            0x0060
 

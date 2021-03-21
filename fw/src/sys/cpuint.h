@@ -1,7 +1,7 @@
 #ifndef _CPUINT_H_
 #define _CPUINT_H_
 
-#include "sys.h"
+#include "def.h"
 
 #define CPUINT_ADDR         0x0110
 
