@@ -39,6 +39,9 @@
     <ClCompile Include="src\sys\evsys.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\sys\twi.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="LinkerScript.ld" />
@@ -70,6 +73,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\sys\evsys.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sys\twi.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

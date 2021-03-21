@@ -102,6 +102,7 @@
     <ClCompile Include="src\sys\sys.c" />
     <ClCompile Include="src\sys\tca0.c" />
     <ClCompile Include="src\sys\tcb0.c" />
+    <ClCompile Include="src\sys\twi.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FuckFile" />
@@ -117,6 +118,7 @@
     <ClInclude Include="src\sys\sys.h" />
     <ClInclude Include="src\sys\tca0.h" />
     <ClInclude Include="src\sys\tcb0.h" />
+    <ClInclude Include="src\sys\twi.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
