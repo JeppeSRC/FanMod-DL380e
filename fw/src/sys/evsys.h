@@ -42,7 +42,7 @@
 //SYNCHUSERn
 #define EVSYS_bSYNCHUSER    0xFF
 
-void  tcb0_write(uint8 registerOffset, uint8 mask, uint8 data);
-uint8 tcb0_read(uint8 registerOffset, uint8 mask);
+void  evsys_write(uint8 registerOffset, uint8 mask, uint8 data);
+uint8 evsys_read(uint8 registerOffset, uint8 mask);
 
 #endif
