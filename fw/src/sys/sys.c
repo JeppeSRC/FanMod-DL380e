@@ -1,7 +1,7 @@
 #include "sys.h"
 #include <math/math.h>
 
-#define LSBPOS(x) log2(maskLSB(x))
+#define LSBPOS(x) logBase2(maskLSB(x))
 
 void write(uint16 registerAddress, uint8 mask, uint8 data) {
     volatile uint8* reg = (uint8*)registerAddress;

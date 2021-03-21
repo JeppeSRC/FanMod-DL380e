@@ -3,7 +3,7 @@
 
 #include <sys/def.h>
 
-uint8 log2(uint8 v);
+uint8 logBase2(uint8 v);
 uint8 maskLSB(uint8 v);
 
 #endif

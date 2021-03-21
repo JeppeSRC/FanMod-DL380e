@@ -1,6 +1,6 @@
 #include "math.h"
 
-uint8 log2(uint8 v) {
+uint8 logBase2(uint8 v) {
     switch (v) {
         case 0x80:
             return 7;
