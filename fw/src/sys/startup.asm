@@ -37,7 +37,20 @@ isr_vector:
     NOP
     NOP
     NOP
+    #13
     IRQ TCB0_Handler
+    NOP
+    NOP
+    NOP
+    NOP
+    NOP
+    NOP
+    NOP
+    NOP
+    NOP
+    NOP
+    #24
+    IRQ TWIS_Handler
 
 datastart: .word _datastart
 dataend: .word _dataend
