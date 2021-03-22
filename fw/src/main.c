@@ -34,7 +34,7 @@ void TWIS_Handler() {
     } else if (status & TWI_bDIF) {
         if (status & TWI_bDIR) {
             //Reading
-            twi_write(TWI_SSTATUS, TWI_bDIF, 0x01); // Inperrupt and return
+            twi_write(TWI_SSTATUS, TWI_bDIF, 0x01); // Clear intteripåt and return
         } else {
             //Writing
             uint8 data = twi_read(TWI_SDATA, TWI_bDATA);
@@ -52,5 +52,9 @@ void TWIS_Handler() {
 uint8 currentPWM = 0;
 
 void main() {
+    twi_init(1);
 
+    while (1) {
+
+    }
 }
