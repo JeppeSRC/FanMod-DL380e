@@ -24,6 +24,5 @@ uint8 logBase2(uint8 v) {
 }
 
 uint8 maskLSB(uint8 v) {
-    if (v == 0xFF) return 0;
     return v &= ~v + 1;
 }

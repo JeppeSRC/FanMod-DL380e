@@ -6,6 +6,11 @@
 void write(uint16 registerAddress, uint8 mask, uint8 data) {
     volatile uint8* reg = (uint8*)registerAddress;
 
+    if (mask == 0xFF) {
+        *reg = data;
+        return;
+    }
+
     uint8 tmp = *reg & ~mask;
     tmp |= (data << LSBPOS(mask)) & mask;
     *reg = tmp;
@@ -21,6 +26,10 @@ void writew(uint16 registerAddress, uint16 data) {
 
 uint8 read(uint16 registerAddress, uint8 mask) {
     volatile uint8* reg = (uint8*)registerAddress;
+
+    if (mask == 0xFF) {
+        return *reg;
+    }
 
     return (*reg & mask) >> LSBPOS(mask);
 }
