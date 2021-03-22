@@ -55,10 +55,9 @@ void init() {
     twi_init(1); //Initialize twi
 
     //25KHz PWM
-    tca_write(TCA_CTRLA, TCA_bCLKSEL, 0x02); // Div 4 prescaler
     tca_write(TCA_CTRLB, 0xFF, TCA_bCMP0EN | 0x03); //Enable PWM on WO0 (PA3)
-    tca_writew(TCA_PER, 200);
-    tca_writew(TCA_CMP0, 100); //Default to 50% duty cycle
+    tca_writew(TCA_PER, 800); // 20 000 000 / 25 000
+    tca_writew(TCA_CMP0, 400); //Default to 50% duty cycle
     tca_write(TCA_CTRLA, TCA_bENABLE, 1); //Enable counter
 
 
