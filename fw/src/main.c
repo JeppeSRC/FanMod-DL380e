@@ -2,6 +2,7 @@
 #include <sys/clkctrl.h>
 #include <sys/tca0.h>
 #include <sys/twi.h>
+#include <sys/port.h>
 
 #define CMD_GET_SET_PWM 0x01
 #define CMD_SET_PWM 0x02
@@ -53,6 +54,8 @@ uint8 currentPWM = 0;
 
 void init() {
     twi_init(1); //Initialize twi
+
+    port_pin_mode(3, 1); // Set PA3 to output
 
     //25KHz PWM
     tca_write(TCA_CTRLB, 0xFF, TCA_bCMP0EN | 0x03); //Enable PWM on WO0 (PA3)
