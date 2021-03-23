@@ -14,8 +14,8 @@
 #define TCA_CTRLFCLR    0x06
 #define TCA_CTRLFSET    0x07
 #define TCA_EVCTRL      0x09
-#define TCA_INTCRTRL    0x0A
-#define TCA_INTCFLAGS   0x0B
+#define TCA_INTCTRL     0x0A
+#define TCA_INTFLAGS    0x0B
 #define TCA_DBGCTRL     0x0E
 #define TCA_TEMP        0x0F
 #define TCA_CNT         0x20
