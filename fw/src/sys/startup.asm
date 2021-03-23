@@ -38,7 +38,7 @@ isr_vector:
     NOP
     NOP
     #13
-    IRQ TCB0_Handler
+    IRQ TCB_Handler
     NOP
     NOP
     NOP
