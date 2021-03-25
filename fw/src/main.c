@@ -64,14 +64,17 @@ void TCB_Handler() {
 uint8 currentPWM = 0;
 
 void init() {
+    cpuint_write(CPUINT_CTRLA, 0xFF, CPUINT_bIVSEL | CPUINT_bLVL0RR); //Set vector table at start of flash and enable round robin scheduling for interuptts
+    clkctrl_write(CLKCTRL_MCLKCTRLB, CLKCTRL_bPDIV, 0); // Set prescaler to div2 = 10MHz
+
     twi_init(1); //Initialize twi
 
     port_pin_mode(3, 1); // Set PA3 to output
 
     //25KHz PWM
     tca_write(TCA_CTRLB, 0xFF, TCA_bCMP0EN | 0x03); //Enable PWM on WO0 (PA3)
-    tca_writew(TCA_PER, 800); // 20 000 000 / 25 000
-    tca_writew(TCA_CMP0, 400); //Default to 50% duty cycle
+    tca_writew(TCA_PER, 400); // 10 000 000 / 25 000
+    tca_writew(TCA_CMP0, 200); //Default to 50% duty cycle
     tca_write(TCA_CTRLA, TCA_bENABLE, 1); //Enable counter
 
     port_pin_mode(6, 0); //Set PA6 to input
@@ -85,7 +88,7 @@ void init() {
 }
 
 void main() {
-
+    init();
 
 
     while (1) {
