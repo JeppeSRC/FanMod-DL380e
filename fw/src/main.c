@@ -43,7 +43,7 @@ void TWIS_Handler() {
             uint8 data = twi_read(TWI_SDATA, TWI_bDATA);
 
             if (cmd == CMD_SET_PWM) {
-                setPWM = data;
+                setPWM = 200 - data;
                 cmd = 0;
             } else {
                 cmd = data;
@@ -58,7 +58,7 @@ void TCB_Handler() {
 
     float duty = (float)ccmp / (float)cnt;
 
-    requestedPWM = (uint8)(200.0f * duty);
+    requestedPWM = 200 - (uint8)(200.0f * duty);
 }
 
 uint8 currentPWM = 0;
