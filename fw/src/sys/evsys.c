@@ -2,7 +2,7 @@
 #include "sys.h"
 
 void evsys_write(uint8 registerOffset, uint8 mask, uint8 data) {
-    write(EVSYS_ADDR + registerOffset, mask, data);
+    write(EVSYS_ADDR + registerOffset, mask, data, 0);
 }
 
 uint8 evsys_read(uint8 registerOffset, uint8 mask) {

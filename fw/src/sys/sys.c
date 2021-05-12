@@ -1,9 +1,10 @@
 #include "sys.h"
+#include "cpu.h"
 #include <math/math.h>
 
 #define LSBPOS(x) logBase2(maskLSB(x))
 
-void write(uint16 registerAddress, uint8 mask, uint8 data) {
+void write(uint16 registerAddress, uint8 mask, uint8 data, uint8 protection) {
     volatile uint8* reg = (uint8*)registerAddress;
 
     if (mask == 0xFF) {
@@ -13,6 +14,13 @@ void write(uint16 registerAddress, uint8 mask, uint8 data) {
 
     uint8 tmp = *reg & ~mask;
     tmp |= (data << LSBPOS(mask)) & mask;
+
+
+    if (protection) {
+        volatile uint8* ccp = (uint8*)(CPU_ADDR + CPU_CCP);
+        *ccp = protection;
+    }
+
     *reg = tmp;
 }
 

@@ -2,7 +2,7 @@
 #include "sys.h"
 
 void port_write(uint8 registerOffset, uint8 data) {
-    write(PORT_ADDR + registerOffset, 0xFF, data);
+    write(PORT_ADDR + registerOffset, 0xFF, data, 0);
 }
 uint8 port_read(uint8 registerOffset) {
     return read(PORT_ADDR + registerOffset, 0xFF);

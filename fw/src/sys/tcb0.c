@@ -2,7 +2,7 @@
 #include "sys.h"
 
 void tcb_write(uint8 registerOffset, uint8 mask, uint8 data) {
-    write(TCB_ADDR + registerOffset, mask, data);
+    write(TCB_ADDR + registerOffset, mask, data, 0);
 }
 
 void tcb_writew(uint8 registerOffset, uint16 data) {

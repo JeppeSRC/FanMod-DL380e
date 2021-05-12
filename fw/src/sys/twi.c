@@ -2,7 +2,7 @@
 #include "sys.h"
 
 void twi_write(uint8 registerOffset, uint8 mask, uint8 data) {
-    write(TWI_ADDR + registerOffset, mask, data);
+    write(TWI_ADDR + registerOffset, mask, data, 0);
 }
 
 uint8 twi_read(uint8 registerOffset, uint8 mask) {

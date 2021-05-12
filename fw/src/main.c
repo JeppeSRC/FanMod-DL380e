@@ -63,6 +63,8 @@ void TCB_Handler() {
 
 uint8 currentPWM = 0;*/
 
+uint8* tmp = (uint8*)0x123;
+
 void init() {
     cpuint_write(CPUINT_CTRLA, 0xFF, CPUINT_bIVSEL | CPUINT_bLVL0RR); //Set vector table at start of flash and enable round robin scheduling for interuptts
     clkctrl_write(CLKCTRL_MCLKCTRLB, CLKCTRL_bPDIV, 0); // Set prescaler to div2 = 10MHz

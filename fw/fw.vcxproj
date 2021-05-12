@@ -113,6 +113,7 @@
   <ItemGroup>
     <ClInclude Include="src\math\math.h" />
     <ClInclude Include="src\sys\clkctrl.h" />
+    <ClInclude Include="src\sys\cpu.h" />
     <ClInclude Include="src\sys\cpuint.h" />
     <ClInclude Include="src\sys\def.h" />
     <ClInclude Include="src\sys\evsys.h" />

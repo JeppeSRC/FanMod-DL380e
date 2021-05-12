@@ -84,5 +84,8 @@
     <ClInclude Include="src\sys\port.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\sys\cpu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

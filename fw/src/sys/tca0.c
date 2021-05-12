@@ -2,7 +2,7 @@
 #include "sys.h"
 
 void tca_write(uint8 registerOffset, uint8 mask, uint8 data) {
-    write(TCA_ADDR + registerOffset, mask, data);
+    write(TCA_ADDR + registerOffset, mask, data, 0);
 }
 
 void tca_writew(uint8 registerOffset, uint16 data) {

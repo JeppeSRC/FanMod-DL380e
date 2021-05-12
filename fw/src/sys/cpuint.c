@@ -2,7 +2,7 @@
 #include "sys.h"
 
 void cpuint_write(uint8 registerOffset, uint8 mask, uint8 data) {
-    write(CPUINT_ADDR + registerOffset, mask, data);
+    write(CPUINT_ADDR + registerOffset, mask, data, 0);
 }
 
 uint8 cpuint_read(uint8 registerOffset, uint8 mask) {
