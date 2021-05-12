@@ -9,11 +9,11 @@
 #define CMD_GET_SET_PWM 0x01
 #define CMD_SET_PWM 0x02
 #define CMD_GET_REQUESTED_PWM 0x03
-/*
+
 volatile uint8 cmd = 0;
 volatile uint8 setPWM = 0;
 volatile uint8 requestedPWM = 0;
-
+/*
 void TWIS_Handler() {
     uint8 status = twi_read(TWI_SSTATUS, 0xFF);
 
@@ -61,10 +61,8 @@ void TCB_Handler() {
     requestedPWM = 200 - (uint8)(200.0f * duty);
 }
 
-uint8 currentPWM = 0;*/
-
-uint8* tmp = (uint8*)0x123;
-
+uint8 currentPWM = 0;
+*/
 void init() {
     cpuint_write(CPUINT_CTRLA, 0xFF, CPUINT_bIVSEL | CPUINT_bLVL0RR); //Set vector table at start of flash and enable round robin scheduling for interuptts
     clkctrl_write(CLKCTRL_MCLKCTRLB, CLKCTRL_bPDIV, 0); // Set prescaler to div2 = 10MHz
@@ -79,7 +77,7 @@ void init() {
     tca_writew(TCA_CMP0, 200); //Default to 50% duty cycle
     tca_write(TCA_CTRLA, TCA_bENABLE, 1); //Enable counter
 
-   /* port_pin_mode(6, 0); //Set PA6 to input
+    /*port_pin_mode(6, 0); //Set PA6 to input
 
     evsys_write(EVSYS_ASYNCCH0, EVSYS_bASYNCHCH, 0x10); //Set PA6 as event source for ASYNCCH0
     evsys_write(EVSYS_ASYNCUSER0, EVSYS_bASYNCUSER, 0x03); //Set ASYNCH0 as source for TCB input events
@@ -89,11 +87,21 @@ void init() {
     tcb_write(TCB_CTRLA, 0xFF, 0x01); // Enable*/
 }
 
-void main() {
-    init();
 
+
+void main() {
+    //init();
+
+    uint16 a = 0;
+    uint16 speed = 60;
 
     while (1) {
+        a++;
+        if (a == 50000) {
+            speed++;
 
+            if (speed > 200) speed = 60;
+            tca_writew(TCA_CMP0, speed);
+        }
     }
 }
