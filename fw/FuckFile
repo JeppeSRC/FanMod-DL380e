@@ -11,6 +11,8 @@ INC = -Isrc/
 
 OutDir = bin/
 ObjDir = %(OutDir)obj/
+OutElf = %(OutDir)fw.elf
+OutHex = %(OutDir)fw.hex
 
 AFLAGS = -mmcu=avrxmega3
 CFLAGS = %(AFLAGS) -O3 -Wall -flto -Wno-main
@@ -31,10 +33,16 @@ Link {
     !%(LD) %(LFLAGS) -o %Output %Input
 }
 
+Convert {
+    Msg(Converting to hex)
+    !avr-objcopy -O ihex %Input %Output
+}
+
 build:
     ExecuteList(Compile, %(CFILES), %(ObjDir))
     ExecuteList(Assemble, %(ASMFILES), %(ObjDir))
-    Execute(Link, GetFiles(%(ObjDir),*.obj,), %(OutDir)test.elf)
+    Execute(Link, GetFiles(%(ObjDir),*.obj,), %(OutElf))
+    Execute(Convert, %(OutElf), %(OutHex))
 
 clean:
     DeleteFiles(GetFiles(%(ObjDir), *.obj,))
