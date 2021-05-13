@@ -28,6 +28,7 @@ void port_write(uint8 registerOffset, uint8 data);
 uint8 port_read(uint8 registerOffset);
 
 void port_pin_mode(uint8 pin, uint8 mode);
+void port_pin_ctrl(uint8 pin, uint8 isc, uint8 pullup, uint8 inv);
 void port_pin_out(uint8 pin, uint8 output);
 uint8 port_pin_in(uint8 pin);
 

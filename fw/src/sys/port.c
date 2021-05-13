@@ -16,6 +16,12 @@ void port_pin_mode(uint8 pin, uint8 mode) {
     }
 }
 
+void port_pin_ctrl(uint8 pin, uint8 isc, uint8 pullup, uint8 inv) {
+    volatile uint8* reg = (uint8*)(PORT_ADDR + PORT_PIN0CTRL + pin);
+
+    *reg = ((inv & 0x01) << 7) | ((pullup & 0x01) << 3) | (isc & 0x07);
+}
+
 void port_pin_out(uint8 pin, uint8 output) {
     if (output == 0) {
         port_write(PORT_OUTCLR, 1 << pin);
