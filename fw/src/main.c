@@ -17,10 +17,10 @@
 #define EH
 #endif
 
+volatile uint16 requestedPWM = 0;
 /*
 volatile uint8 cmd = 0;
 volatile uint8 setPWM = 0;
-volatile uint16 requestedPWM = 0;
 
 void TWIS_Handler() {
     uint8 status = twi_read(TWI_SSTATUS, 0xFF);
@@ -61,9 +61,14 @@ void TWIS_Handler() {
 }
 */
  void EH TCB_Handler()  {
-    uint16 pwm = tcb_readw(TCB_CCMP);
+    uint16 cnt = tcb_readw(TCB_CNT);
+    uint16 ccmp = tcb_readw(TCB_CCMP);
 
-    tca_writew(TCA_CMP0, pwm);
+    float duty = (float)ccmp / (float)cnt;
+
+    requestedPWM = (uint16)(duty * 400);
+
+    if (requestedPWM > 400) requestedPWM = 350;
 }
 
 #define INVERTED_PWM 1
@@ -102,7 +107,21 @@ void init() {
 void main() {
     init();
 
-    while (1) {
+    uint16 pwm = 0;
 
+    while (1) {
+        if (requestedPWM <= 200) { // < 50&%
+            pwm = 80;
+        } else if (requestedPWM <= 240) { // < 60%
+            pwm = 100;
+        } else if (requestedPWM <= 280) { // < 70%
+            pwm = 140;
+        } else if (requestedPWM <= 320) { // < 80%
+            pwm = 200;
+        } else {
+            pwm = requestedPWM;
+        }
+
+        tca_writew(TCA_CMP0, pwm);
     }
 }
