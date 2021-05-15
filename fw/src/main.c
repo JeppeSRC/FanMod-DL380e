@@ -5,15 +5,17 @@
 #include <sys/twi.h>
 #include <sys/port.h>
 #include <sys/evsys.h>
+#include <sys/cpu.h>
 
 #define CMD_GET_SET_PWM 0x01
 #define CMD_SET_PWM 0x02
 #define CMD_GET_REQUESTED_PWM 0x03
 
+/*
 volatile uint8 cmd = 0;
 volatile uint8 setPWM = 0;
-volatile uint8 requestedPWM = 0;
-/*
+volatile uint16 requestedPWM = 0;
+
 void TWIS_Handler() {
     uint8 status = twi_read(TWI_SSTATUS, 0xFF);
 
@@ -51,18 +53,15 @@ void TWIS_Handler() {
         }
     }
 }
-
+*/
 void TCB_Handler() {
-    uint16 cnt = tcb_readw(TCB_CNT);
-    uint16 ccmp = tcb_readw(TCB_CCMP);
+    uint16 pwm = tcb_readw(TCB_CCMP);
 
-    float duty = (float)ccmp / (float)cnt;
-
-    requestedPWM = 200 - (uint8)(200.0f * duty);
+    tca_writew(TCA_CMP0, pwm);
 }
 
-uint8 currentPWM = 0;
-*/
+#define INVERTED_PWM 1
+
 void init() {
     cpuint_write(CPUINT_CTRLA, 0xFF, CPUINT_bIVSEL | CPUINT_bLVL0RR); //Set vector table at start of flash and enable round robin scheduling for interuptts
     clkctrl_write(CLKCTRL_MCLKCTRLB, CLKCTRL_bPDIV, 0); // Set prescaler to div2 = 10MHz
@@ -70,6 +69,7 @@ void init() {
     //twi_init(1); //Initialize twi
 
     port_pin_mode(3, 1); // Set PA3 to output
+    port_pin_ctrl(3, 0, 0, INVERTED_PWM);
 
     //25KHz PWM
     tca_write(TCA_CTRLB, 0xFF, TCA_bCMP0EN | 0x03); //Enable PWM on WO0 (PA3)
@@ -77,31 +77,26 @@ void init() {
     tca_writew(TCA_CMP0, 200); //Default to 50% duty cycle
     tca_write(TCA_CTRLA, TCA_bENABLE, 1); //Enable counter
 
-    /*port_pin_mode(6, 0); //Set PA6 to input
+    cpu_write(CPU_SREG, CPU_bI, 0x01); //Enable interrupts globally
+
+    port_pin_mode(6, 0); //Set PA6 to input
+    port_pin_ctrl(6, 0, 0, INVERTED_PWM);
 
     evsys_write(EVSYS_ASYNCCH0, EVSYS_bASYNCHCH, 0x10); //Set PA6 as event source for ASYNCCH0
     evsys_write(EVSYS_ASYNCUSER0, EVSYS_bASYNCUSER, 0x03); //Set ASYNCH0 as source for TCB input events
 
     tcb_write(TCB_CTRLB, 0xFF, 0x05); // Enable frequency and pulse-width measurements
+    tcb_write(TCB_EVCTRL, 0xFF, 0x41); // Enable noise cancellation filter and input event capture
     tcb_write(TCB_INTCTRL, 0xFF, 0x01); // Enable capture interrupt
-    tcb_write(TCB_CTRLA, 0xFF, 0x01); // Enable*/
+    tcb_write(TCB_CTRLA, 0xFF, 0x01); // Enable
 }
 
 
 
 void main() {
-    //init();
-
-    uint16 a = 0;
-    uint16 speed = 60;
+    init();
 
     while (1) {
-        a++;
-        if (a == 50000) {
-            speed++;
 
-            if (speed > 200) speed = 60;
-            tca_writew(TCA_CMP0, speed);
-        }
     }
 }
