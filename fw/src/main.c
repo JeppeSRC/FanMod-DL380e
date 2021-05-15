@@ -11,6 +11,12 @@
 #define CMD_SET_PWM 0x02
 #define CMD_GET_REQUESTED_PWM 0x03
 
+#ifdef WORKAROUNDBECAUSEVSISFUCKINGME
+#define EH __attribute__((interrupt))
+#else
+#define EH
+#endif
+
 /*
 volatile uint8 cmd = 0;
 volatile uint8 setPWM = 0;
@@ -54,7 +60,7 @@ void TWIS_Handler() {
     }
 }
 */
-void TCB_Handler() {
+ void EH TCB_Handler()  {
     uint16 pwm = tcb_readw(TCB_CCMP);
 
     tca_writew(TCA_CMP0, pwm);

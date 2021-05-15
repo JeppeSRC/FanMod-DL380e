@@ -20,7 +20,7 @@ LFLAGS = -nostartfiles -Wl,--gc-sections -T"LinkerScript.ld" -mmcu=avrxmega3 -fl
 
 Compile {
     Msg(Compiling %Input)
-    !%(CC) %(CFLAGS) %(INC) -c -o %Output %Input
+    !%(CC) %(CFLAGS) %(INC) -DWORKAROUNDBECAUSEVSISFUCKINGME -c -o %Output %Input
 }
 
 Assemble {
