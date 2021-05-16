@@ -66,9 +66,13 @@ void TWIS_Handler() {
 
     float duty = (float)ccmp / (float)cnt;
 
-    requestedPWM = (uint16)(duty * 400);
+    uint16 tmp = (uint16)(duty * 400);
 
-    if (requestedPWM > 400) requestedPWM = 350;
+    if (tmp > 400) {
+        requestedPWM = 350;
+    } else {
+        requestedPWM = tmp;
+    }
 }
 
 #define INVERTED_PWM 1
@@ -88,8 +92,6 @@ void init() {
     tca_writew(TCA_CMP0, 200); //Default to 50% duty cycle
     tca_write(TCA_CTRLA, TCA_bENABLE, 1); //Enable counter
 
-    cpu_write(CPU_SREG, CPU_bI, 0x01); //Enable interrupts globally
-
     port_pin_mode(6, 0); //Set PA6 to input
     port_pin_ctrl(6, 0, 0, INVERTED_PWM);
 
@@ -100,6 +102,8 @@ void init() {
     tcb_write(TCB_EVCTRL, 0xFF, 0x41); // Enable noise cancellation filter and input event capture
     tcb_write(TCB_INTCTRL, 0xFF, 0x01); // Enable capture interrupt
     tcb_write(TCB_CTRLA, 0xFF, 0x01); // Enable
+
+    cpu_write(CPU_SREG, CPU_bI, 0x01); //Enable interrupts globally
 }
 
 
