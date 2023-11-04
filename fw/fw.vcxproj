@@ -68,6 +68,7 @@
     <NMakeCleanCommandLine>FuckMake clean</NMakeCleanCommandLine>
     <NMakeReBuildCommandLine>FuckMake rebuild</NMakeReBuildCommandLine>
     <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <IncludePath>$(SolutionDir)src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <NMakeBuildCommandLine>FuckMake</NMakeBuildCommandLine>
@@ -75,6 +76,7 @@
     <NMakeCleanCommandLine>FuckMake clean</NMakeCleanCommandLine>
     <NMakeReBuildCommandLine>FuckMake rebuild</NMakeReBuildCommandLine>
     <NMakePreprocessorDefinitions>_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <IncludePath>$(SolutionDir)src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <NMakeBuildCommandLine>FuckMake</NMakeBuildCommandLine>
@@ -82,6 +84,7 @@
     <NMakeCleanCommandLine>FuckMake clean</NMakeCleanCommandLine>
     <NMakeReBuildCommandLine>FuckMake rebuild</NMakeReBuildCommandLine>
     <NMakePreprocessorDefinitions>WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <IncludePath>$(SolutionDir)src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <NMakeBuildCommandLine>FuckMake</NMakeBuildCommandLine>
@@ -90,6 +93,7 @@
     <NMakeReBuildCommandLine>FuckMake rebuild</NMakeReBuildCommandLine>
     <NMakePreprocessorDefinitions>NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
     <NMakeIncludeSearchPath>src</NMakeIncludeSearchPath>
+    <IncludePath>$(SolutionDir)src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>
